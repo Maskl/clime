@@ -1,0 +1,48 @@
+﻿<Window x:Class="Clime.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Height="300"
+        Width="300"
+        Title="MVVM Light Application"
+        DataContext="{Binding MainVm, Source={StaticResource Locator}}">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.685*" />
+            <ColumnDefinition Width="0.315*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock FontSize="36"
+                   FontWeight="Bold"
+                   Foreground="#FF2970E2"
+                   Text="{Binding WelcomeTitle}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap" />
+
+        <Button Content="Pomiary"
+                Height="43.32"
+                Margin="89.285,0,16.937,2.273"
+                VerticalAlignment="Bottom"
+                Command="{Binding ShowAllMeasurementsViewCommand}" />
+        
+        <Button Content="Dodaj"
+                HorizontalAlignment="Left"
+                Height="43.32"
+                Margin="17.222,0,0,2"
+                VerticalAlignment="Bottom"
+                Command="{Binding ShowNewMeasurementViewCommand}" />
+        
+        <Button Content="About"
+                HorizontalAlignment="Right"
+                Height="41.593"
+                Margin="0,8,8,0"
+                VerticalAlignment="Top"
+                Width="40.02"
+                Command="{Binding ShowAboutViewCommand}" />
+
+    </Grid>
+</Window>

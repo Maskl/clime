@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using Clime.Model;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace Clime.ViewModel
 {
@@ -16,17 +18,12 @@ namespace Clime.ViewModel
     {
         private readonly IDataService _dataService;
 
-        /// <summary>
-        /// The <see cref="WelcomeTitle" /> property's name.
-        /// </summary>
+        public RelayCommand ShowAllMeasurementsViewCommand { get; private set; }
+        public RelayCommand ShowNewMeasurementViewCommand { get; private set; }
+        public RelayCommand ShowAboutViewCommand { get; private set; }
+
         public const string WelcomeTitlePropertyName = "WelcomeTitle";
-
         private string _welcomeTitle = string.Empty;
-
-        /// <summary>
-        /// Gets the WelcomeTitle property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
         public string WelcomeTitle
         {
             get
@@ -46,9 +43,6 @@ namespace Clime.ViewModel
             }
         }
 
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
         public MainViewModel(IDataService dataService)
         {
             _dataService = dataService;
@@ -63,13 +57,44 @@ namespace Clime.ViewModel
 
                     WelcomeTitle = item.Title;
                 });
+
+            ShowAllMeasurementsViewCommand = new RelayCommand(ShowAllMeasurementsView);
+            ShowNewMeasurementViewCommand = new RelayCommand(ShowAddNewMeasurementView);
+            ShowAboutViewCommand = new RelayCommand(ShowAboutView);
+
+            // We expect a message with some lists with changes.
+         //   Messenger.Default.Register<CategoryEditorChangesMessage>(this, MakingNewCatChanges);
         }
 
-        ////public override void Cleanup()
-        ////{
-        ////    // Clean up if needed
+        private void ShowAllMeasurementsView()
+        {
+            var newView = new View.AllMeasurementsView();
+            newView.ShowDialog();
+        }
 
-        ////    base.Cleanup();
-        ////}
+        private void ShowAddNewMeasurementView()
+        {
+            var newView = new View.NewMeasurementView();
+            newView.ShowDialog();
+        }
+
+        private void ShowAboutView()
+        {
+            var newView = new View.AboutView();
+            newView.ShowDialog();
+        }
+
+        private void ShowMainView()
+        {
+            var newView = new View.MainView();
+            newView.ShowDialog();
+        }
+
+
+        public override void Cleanup()
+        {
+            // Clean up if needed
+            base.Cleanup();
+        }
     }
 }

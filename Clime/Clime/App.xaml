@@ -4,13 +4,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Clime.ViewModel"
-             StartupUri="MainWindow.xaml"
+             xmlns:MVVMUtils="clr-namespace:Clime.MVVMUtils"
+             StartupUri="View\MainView.xaml"
              mc:Ignorable="d">
-    
+
     <Application.Resources>
         <!--Global View Model Locator-->
-        <vm:ViewModelLocator x:Key="Locator"
-                             d:IsDataSource="True" />
+        <MVVMUtils:ViewModelLocator x:Key="Locator"
+                                    d:IsDataSource="True" />
     </Application.Resources>
-    
+
 </Application>

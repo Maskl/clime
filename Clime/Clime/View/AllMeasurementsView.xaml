@@ -1,0 +1,23 @@
+﻿<Window x:Class="Clime.View.AllMeasurementsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        DataContext="{Binding AllMeasurementsVm, Source={StaticResource Locator}}">
+
+    <Grid>
+        <Button Content="Add new"
+                Width="126"
+                Height="67.5"
+                Margin="350,0,251,34.5"
+                VerticalAlignment="Bottom"
+                Command="{Binding ShowNewMeasurementViewCommand}" />
+        
+        <Button Content="Close"
+                HorizontalAlignment="Right"
+                Height="49.5"
+                Margin="0,0,41,34.5"
+                VerticalAlignment="Bottom" />
+    </Grid>
+</Window>

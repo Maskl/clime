@@ -26,6 +26,7 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    TextWrapping="Wrap" />
+        <Button Content="Button" Height="37" Margin="25,19,143,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
