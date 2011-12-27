@@ -3,25 +3,44 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
-        DataContext="{Binding NewMeasurementVm, Source={StaticResource Locator}}">
+        xmlns:extToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended" mc:Ignorable="d"
+        DataContext="{Binding NewMeasurementVm, Source={StaticResource Locator}}" Height="260" Width="396" Title="Add measurement">
 
-    <Grid>
+    <Grid ShowGridLines="True">
+    	<Grid.RowDefinitions>
+    		<RowDefinition/>
+    		<RowDefinition Height="2*"/>
+    		<RowDefinition/>
+    		<RowDefinition Height="2*"/>
+    		<RowDefinition/>
+    		<RowDefinition Height="2*"/>
+    		<RowDefinition Height="2*"/>
+    	</Grid.RowDefinitions>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition/>
+    	</Grid.ColumnDefinitions>
        
         <Button Content="Cancel"
-                HorizontalAlignment="Right"
-                Height="92"
-                Margin="0,0,236,33"
+                Height="25"
+                Margin="149,0,129,8"
                 VerticalAlignment="Bottom"
-                Width="144"
-                IsCancel="True"/>
+                IsCancel="True" Grid.Row="6" d:LayoutOverrides="GridBox"/>
 
-        <Button Content="OK"
+        <Button Content="Add measurement"
                 HorizontalAlignment="Right"
-                Height="92"
-                Margin="0,0,30,33"
+                Height="25"
+                Margin="0,0,8,8"
                 VerticalAlignment="Bottom"
-                Width="140"
-                Click="OnOkButton" />
+                Width="110"
+                Click="OnOkButton" Grid.Row="6" d:LayoutOverrides="GridBox" />
+        <ComboBox Margin="8,10.437,0,11.997" Grid.Row="1" RenderTransformOrigin="0.719,-0.329" HorizontalAlignment="Left" Width="137"/>
+        <ComboBox Margin="149,8,184,0" Grid.Row="1" Height="26.363" VerticalAlignment="Top"/>
+        <ComboBox Margin="8,10.437,0,11.997" Grid.Row="5" RenderTransformOrigin="0.719,-0.329" HorizontalAlignment="Left" Width="69"/>
+        <ComboBox Margin="81,8,0,0" Grid.Row="5" HorizontalAlignment="Left" Width="55" Height="26.363" VerticalAlignment="Top"/>
+        <ComboBox Margin="0,10.437,43,11.997" Grid.Row="1" RenderTransformOrigin="0.719,-0.329" HorizontalAlignment="Right" Width="137"/>
+        <DatePicker HorizontalAlignment="Left" Margin="8,0,0,10.363" Grid.Row="3" VerticalAlignment="Bottom"/>
+        <TextBlock HorizontalAlignment="Left" Margin="8,8,0,-0.095" TextWrapping="Wrap" Text="Choose your city" d:LayoutOverrides="Height"/>
+        <TextBlock HorizontalAlignment="Left" Margin="8,8,0,-0.097" Grid.Row="2" TextWrapping="Wrap" Text="Choose measurement date" d:LayoutOverrides="Height"/>
+        <TextBlock HorizontalAlignment="Left" Margin="8,7.999,0,-0.097" Grid.Row="4" TextWrapping="Wrap" Text="Choose observed MAXIMUM temperature and cloudiness" d:LayoutOverrides="Height"/>
     </Grid>
 </Window>

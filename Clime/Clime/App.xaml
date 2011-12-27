@@ -8,8 +8,14 @@
              mc:Ignorable="d">
 
     <Application.Resources>
-        <vm:ViewModelLocator x:Key="Locator"
-                             d:IsDataSource="True" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MVVMUtils\BureauBlue.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <vm:ViewModelLocator x:Key="Locator"
+                                 d:IsDataSource="True" />
+        </ResourceDictionary>
     </Application.Resources>
 
 </Application>
