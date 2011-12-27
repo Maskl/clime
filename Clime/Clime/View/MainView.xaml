@@ -4,45 +4,61 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Height="300"
-        Width="300"
+        Height="500"
+        Width="700"
         Title="Clime"
         DataContext="{Binding MainVm, Source={StaticResource Locator}}">
 
-    <Grid x:Name="LayoutRoot">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.685*" />
-            <ColumnDefinition Width="0.315*" />
-        </Grid.ColumnDefinitions>
+    <StackPanel>
+		<Menu Height="20">
+			<MenuItem Header="File" Margin="0">
+                <MenuItem Header="Close" Click="MenuItem_Click"/>
+			</MenuItem>
+			<MenuItem Header="Measurement" Margin="0" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+                <MenuItem Header="Add new"
+                          Command="{Binding ShowNewMeasurementViewCommand}" />
+                <MenuItem Header="Show all"
+                          Command="{Binding ShowAllMeasurementsViewCommand}" />
+			</MenuItem>
+			<MenuItem Header="Help" Margin="0" VerticalAlignment="Top">
+				<MenuItem Header="About" Command="{Binding ShowAboutViewCommand}"/>
+			</MenuItem>
+		</Menu>
+		<Grid x:Name="LayoutRoot" Height="454">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.685*" />
+				<ColumnDefinition Width="0.315*" />
+			</Grid.ColumnDefinitions>
 
-        <TextBlock FontSize="36"
-                   FontWeight="Bold"
-                   Foreground="#FF2970E2"
-                   Text="{Binding WelcomeTitle}"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   TextWrapping="Wrap" />
+			<TextBlock FontSize="36"
+				FontWeight="Bold"
+				Foreground="#FF2970E2"
+				Text="{Binding WelcomeTitle}"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				TextWrapping="Wrap" />
 
-        <Button Content="Pomiary"
-                Height="43.32"
-                Margin="89.285,0,16.937,2.273"
-                VerticalAlignment="Bottom"
-                Command="{Binding ShowAllMeasurementsViewCommand}" />
+			<Button Content="Pomiary"
+				Height="43.32"
+				Margin="152.285,0,-46.063,95.273"
+				VerticalAlignment="Bottom"
+				Command="{Binding ShowAllMeasurementsViewCommand}" />
         
-        <Button Content="Dodaj"
-                HorizontalAlignment="Left"
-                Height="43.32"
-                Margin="17.222,0,0,2"
-                VerticalAlignment="Bottom"
-                Command="{Binding ShowNewMeasurementViewCommand}" />
+			<Button Content="Dodaj"
+				HorizontalAlignment="Left"
+				Height="43.32"
+				Margin="47.222,0,0,80"
+				VerticalAlignment="Bottom"
+				Command="{Binding ShowNewMeasurementViewCommand}" />
         
-        <Button Content="About"
-                HorizontalAlignment="Right"
-                Height="41.593"
-                Margin="0,8,8,0"
-                VerticalAlignment="Top"
-                Width="40.02"
-                Command="{Binding ShowAboutViewCommand}" />
+			<Button Content="About"
+				HorizontalAlignment="Right"
+				Height="41.593"
+				Margin="0,8,8,0"
+				VerticalAlignment="Top"
+				Width="40.02"
+				Command="{Binding ShowAboutViewCommand}" />
 
-    </Grid>
+		</Grid>
+	</StackPanel>
 </Window>

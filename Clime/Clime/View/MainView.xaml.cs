@@ -20,5 +20,10 @@ namespace Clime.View
                     msg.ProcessCallback(result);
                 });
         }
+
+        private void MenuItem_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	Close();
+        }
     }
 }
