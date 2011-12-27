@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        DataContext="{Binding AboutVm, Source={StaticResource Locator}}">
+        DataContext="{Binding AboutVm, Source={StaticResource Locator}}" d:DesignHeight="281" Width="400" Title="About" ShowInTaskbar="False" Height="280">
 
     <Grid>
         <Button Content="OK"
-                Margin="187,157,330,192"
-                IsCancel="True" />
+                Margin="0,0,8,8"
+                IsCancel="True" Height="25.083" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="110.25" />
+        <TextBlock Margin="8,8,8,37.083" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consectetur quam sed lectus euismod molestie. In non turpis quam. Nullam id magna arcu. Pellentesque egestas purus lacinia elit rutrum accumsan. Suspendisse est dui, pharetra at pellentesque non, posuere ac turpis. Cras sed magna metus, a rutrum ligula. Donec in tellus sapien, nec iaculis urna. Donec varius viverra velit id venenatis. "/>
     </Grid>
 </Window>

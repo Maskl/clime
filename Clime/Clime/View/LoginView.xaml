@@ -4,11 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        DataContext="{Binding LoginVm, Source={StaticResource Locator}}">
+        DataContext="{Binding LoginVm, Source={StaticResource Locator}}" d:DesignWidth="282" d:DesignHeight="221" Width="280" Height="220" Title="Login to Clime">
 
     <Grid>
+    	<Grid.RowDefinitions>
+    		<RowDefinition/>
+    		<RowDefinition Height="41"/>
+    	</Grid.RowDefinitions>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition/>
+    		<ColumnDefinition/>
+    	</Grid.ColumnDefinitions>
         <Button Content="Login"
-                Margin="303,161,184,190"
-                Click="OnLoginButton" />
+                Margin="0,0,0,8"
+                Click="OnLoginButton" Height="25" VerticalAlignment="Bottom" RenderTransformOrigin="-3.175,-8.463" Grid.Row="1" HorizontalAlignment="Center" Width="110" Grid.ColumnSpan="2" />
+        <TextBlock Margin="8,8,8,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top"/>
+        <CheckBox Content="Anonymously" Margin="24,25.276,8,0" VerticalAlignment="Top"/>
+        <TextBlock Margin="8,44.276,8,0" TextWrapping="Wrap" Text="or as user" VerticalAlignment="Top" RenderTransformOrigin="0.537,-0.196"/>
+        <TextBox Margin="24,61.552,8,68.513" TextWrapping="Wrap" Text="login" d:LayoutOverrides="Height"/>
+        <PasswordBox Margin="24,0,8,42.579" VerticalAlignment="Bottom" Password="pass"/>
+        <RadioButton Content="English" Grid.Column="1" Margin="42.306,8,8,0" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+        <RadioButton Content="Norsk" Grid.Column="1" Margin="42.306,28,8,0" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+        <RadioButton Content="Polski" Grid.Column="1" Margin="42.306,48,8,0" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
     </Grid>
 </Window>

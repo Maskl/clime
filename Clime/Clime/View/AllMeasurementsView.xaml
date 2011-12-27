@@ -4,21 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        DataContext="{Binding AllMeasurementsVm, Source={StaticResource Locator}}">
+        DataContext="{Binding AllMeasurementsVm, Source={StaticResource Locator}}" Title="Show all measurements" Width="700" Height="500" ShowInTaskbar="False">
 
     <Grid>
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="60"/>
+    		<RowDefinition/>
+    		<RowDefinition Height="41"/>
+    	</Grid.RowDefinitions>
         <Button Content="Add new"
-                Width="126"
-                Height="67.5"
-                Margin="350,0,251,34.5"
+                Width="110"
+                Height="25"
+                Margin="0,0,122,8"
                 VerticalAlignment="Bottom"
-                Command="{Binding ShowNewMeasurementViewCommand}" />
+                Command="{Binding ShowNewMeasurementViewCommand}" HorizontalAlignment="Right" Grid.Row="2" d:LayoutOverrides="Width" />
         
         <Button Content="Close"
                 HorizontalAlignment="Right"
-                Height="49.5"
-                Margin="0,0,41,34.5"
+                Height="25"
+                Margin="0,0,8,8"
                 VerticalAlignment="Bottom"
-                IsCancel="True" />
+                IsCancel="True" Width="110" Grid.Row="2" />
+        <TextBlock HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" Text="Filtering" VerticalAlignment="Top"/>
+        <ComboBox Margin="8,25.277,0,0" RenderTransformOrigin="0.719,-0.329" Height="19.929" VerticalAlignment="Top" HorizontalAlignment="Left" Width="137"/>
+        <ComboBox Margin="149,22.84,0,0" Height="26.363" VerticalAlignment="Top" HorizontalAlignment="Left" Width="55" d:LayoutOverrides="HorizontalAlignment"/>
+        <ComboBox Margin="208,25.277,0,0" RenderTransformOrigin="0.719,-0.329" Height="19.929" VerticalAlignment="Top" HorizontalAlignment="Left" Width="141"/>
+        <ListBox Margin="8" Grid.Row="1"/>
     </Grid>
 </Window>

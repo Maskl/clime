@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:extToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended" mc:Ignorable="d"
-        DataContext="{Binding NewMeasurementVm, Source={StaticResource Locator}}" Height="260" Width="400" Title="Add measurement">
+        DataContext="{Binding NewMeasurementVm, Source={StaticResource Locator}}" Height="260" Width="400" Title="Add measurement" ShowInTaskbar="False">
 
     <Grid>
     	<Grid.RowDefinitions>
@@ -40,7 +40,7 @@
         <ComboBox Margin="208,10.437,43,0" Grid.Row="1" RenderTransformOrigin="0.719,-0.329" Height="19.929" VerticalAlignment="Top"/>
         <DatePicker Margin="8,8,283.05,0" Grid.Row="3" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
         <TextBlock HorizontalAlignment="Left" Margin="8,0,0,-0.095" TextWrapping="Wrap" Text="Choose your city" VerticalAlignment="Bottom"/>
-        <TextBlock HorizontalAlignment="Left" Margin="8,0,0,-0.098" Grid.Row="2" TextWrapping="Wrap" Text="Choose measurement date" VerticalAlignment="Bottom"/>
+        <TextBlock HorizontalAlignment="Left" Margin="8,0,0,-0.1" Grid.Row="2" TextWrapping="Wrap" Text="Choose measurement date" VerticalAlignment="Bottom"/>
         <TextBlock HorizontalAlignment="Left" Margin="8,8.001,0,-0.097" Grid.Row="4" TextWrapping="Wrap" Text="Choose observed MAXIMUM temperature and cloudiness" d:LayoutOverrides="Height"/>
     </Grid>
 </Window>
