@@ -7,18 +7,21 @@
         DataContext="{Binding NewMeasurementVm, Source={StaticResource Locator}}">
 
     <Grid>
-        <Button Content="OK"
-                HorizontalAlignment="Right"
-                Height="92"
-                Margin="0,0,30,33"
-                VerticalAlignment="Bottom"
-                Width="140"/>
-        
+       
         <Button Content="Cancel"
                 HorizontalAlignment="Right"
                 Height="92"
                 Margin="0,0,236,33"
                 VerticalAlignment="Bottom"
-                Width="144" />
+                Width="144"
+                IsCancel="True"/>
+
+        <Button Content="OK"
+                HorizontalAlignment="Right"
+                Height="92"
+                Margin="0,0,30,33"
+                VerticalAlignment="Bottom"
+                Width="140"
+                Click="OnOkButton" />
     </Grid>
 </Window>

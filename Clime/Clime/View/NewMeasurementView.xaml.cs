@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace Clime.View
 {
@@ -7,6 +8,12 @@ namespace Clime.View
         public NewMeasurementView()
         {
             InitializeComponent();
+        }
+
+        private void OnOkButton(object sender, RoutedEventArgs e)
+        {
+            Messenger.Default.Send<string, ViewModel.NewMeasurementViewModel>("OkClickedMessage");
+            Close();
         }
     }
 }

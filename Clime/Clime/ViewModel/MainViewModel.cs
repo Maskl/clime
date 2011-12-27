@@ -1,19 +1,11 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System.Windows;
+using GalaSoft.MvvmLight;
 using Clime.Model;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 
 namespace Clime.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm/getstarted
-    /// </para>
-    /// </summary>
     public class MainViewModel : ViewModelBase
     {
         private readonly IDataService _dataService;
@@ -63,7 +55,7 @@ namespace Clime.ViewModel
             ShowAboutViewCommand = new RelayCommand(ShowAboutView);
 
             // We expect a message with some lists with changes.
-         //   Messenger.Default.Register<CategoryEditorChangesMessage>(this, MakingNewCatChanges);
+            Messenger.Default.Register<Messages.NewMeasurementAddedMessage>(this, AddedNewMeasurement);
         }
 
         private void ShowAllMeasurementsView()
@@ -84,17 +76,13 @@ namespace Clime.ViewModel
             newView.ShowDialog();
         }
 
-        private void ShowMainView()
+        private void AddedNewMeasurement(Messages.NewMeasurementAddedMessage message)
         {
-            var newView = new View.MainView();
-            newView.ShowDialog();
-        }
+            if (message == null)
+                return;
 
-
-        public override void Cleanup()
-        {
-            // Clean up if needed
-            base.Cleanup();
+            // todo:
+            Messenger.Default.Send(new DialogMessage("Added " + message.MeasurementAdded, null) { Button = MessageBoxButton.OK, Caption = "Caption??" });
         }
     }
 }

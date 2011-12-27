@@ -8,6 +8,7 @@
 
     <Grid>
         <Button Content="OK"
-                Margin="187,157,330,192" />
+                Margin="187,157,330,192"
+                IsCancel="True" />
     </Grid>
 </Window>

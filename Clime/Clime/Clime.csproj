@@ -80,6 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Messages\NewMeasurementAddedMessage.cs" />
     <Compile Include="ViewModel\AboutViewModel.cs" />
     <Compile Include="ViewModel\AllMeasurementsViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
