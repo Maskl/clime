@@ -1,21 +1,22 @@
 ﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace Clime.ViewModel
 {
     public class LoginViewModel : ViewModelBase
     {
-        public RelayCommand ShowMainViewCommand { get; private set; }
-
         public LoginViewModel()
         {
-            ShowMainViewCommand = new RelayCommand(ShowMainView);
+            Messenger.Default.Register<string>(this, SaveNewMeasurement);
         }
 
-        private void ShowMainView()
+        private void SaveNewMeasurement(string message)
         {
-            var newView = new View.MainView();
-            newView.ShowDialog();
+            if (message.Equals("LoginMessage"))
+            {
+                var newView = new View.MainView();
+                newView.Show();
+            }
         }
     }
 }

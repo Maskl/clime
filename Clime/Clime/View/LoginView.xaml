@@ -8,7 +8,7 @@
 
     <Grid>
         <Button Content="Login"
-                Margin="303,161,184,190e"
-                Command="{Binding ShowMainViewCommand}" />
+                Margin="303,161,184,190"
+                Click="OnLoginButton" />
     </Grid>
 </Window>

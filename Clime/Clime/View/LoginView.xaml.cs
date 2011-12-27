@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace Clime.View
 {
@@ -13,6 +14,12 @@ namespace Clime.View
         public LoginView()
         {
             InitializeComponent();
+        }
+
+        private void OnLoginButton(object sender, RoutedEventArgs e)
+        {
+            Messenger.Default.Send<string, ViewModel.LoginViewModel>("LoginMessage");
+            Close();
         }
     }
 }
