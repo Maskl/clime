@@ -63,71 +63,35 @@ namespace Clime.ViewModel
         {
             get
             {
-                return _countries.GetAll();
+                return (_countries == null) ? null : _countries.Countries;
             }
         }
 
 
         private static readonly string[] _dummyCountries = {
-                                                     "pl", "Poland", "PolishImage",
-                                                     "us", "United States", "USImage",
-                                                     "jp", "Japan", "JapanImage",
-                                                     "ua", "Ukraine", "UkraineImage",
-                                                     "it", "Italy", "ItalyImage",
-                                                     "ar", "Argentina", "ArgentinaImage"
+                                                     "aa", "aaaa", "aaaaaas",
+                                                     "bb", "bbbb States", "bbas",
                                                  };
 
-        public const string CountriesPropertyNameX = "CountriesX";
-        private ObservableCollection<Country> _countriesX = null;
-        public ObservableCollection<Country> CountriesX
-        {
-            get
-            {
-                return _countriesX;
-            }
-
-            set
-            {
-                if (_countriesX == value)
-                {
-                    return;
-                }
-
-                _countriesX = value;
-                RaisePropertyChanged(CountriesPropertyNameX);
-            }
-        }
-
-
+        public ObservableCollection<Country> CountriesX { get; set; }
 
         public void Create()
         {
-            _countriesX = new ObservableCollection<Country>();
+            CountriesX = new ObservableCollection<Country>();
             for (int i = 0; i < _dummyCountries.Length; i += 3)
             {
                 var c = new Country(_dummyCountries[i], _dummyCountries[i + 1], _dummyCountries[i + 2]);
-                _countriesX.Add(c);
+                CountriesX.Add(c);
             }
         }
 
 
         public MainViewModel(IDataService dataService)
         {
+            CountriesX = null;
             Create();
 
             _dataService = dataService;
-            _dataService.GetData(
-                (item, error) =>
-                {
-                    if (error != null)
-                    {
-                        // Report error here
-                        return;
-                    }
-
-                    WelcomeTitle = item.Title;
-                });
-
             _dataService.GetCountries(
                 (countries, error) =>
                 {
@@ -137,7 +101,11 @@ namespace Clime.ViewModel
                         return;
                     }
 
-                    _countries = countries;
+                    CountriesX.Clear();
+                    foreach (var country in countries.Countries)
+                    {
+                        CountriesX.Add(country);
+                    }
                 });
 
             ShowAllMeasurementsViewCommand = new RelayCommand(ShowAllMeasurementsView);

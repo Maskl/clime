@@ -42,7 +42,7 @@
                                FontSize="18" />
 
                     <TextBlock TextWrapping="Wrap"
-                               Text="{Binding Model:CountryRepository.CountriesCollection}"
+                               Text="{Binding Model:CountryRepository.Countries}"
                                FontFamily="Segoe UI"
                                FontSize="24" />
 

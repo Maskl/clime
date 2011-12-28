@@ -95,10 +95,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Messages\NewMeasurementAddedMessage.cs" />
+    <Compile Include="MVVMUtils\Messages\NewMeasurementAddedMessage.cs" />
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\CountryRepository.cs" />
-    <Compile Include="Model\ICountryRepository.cs" />
     <Compile Include="Model\Measurement.cs" />
     <Compile Include="MVVMUtils\Bootstrapper.cs" />
     <Compile Include="MVVMUtils\Notifier.cs" />
@@ -144,7 +143,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="MVVMUtils\DesignDataService.cs" />
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -155,9 +154,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\DataItem.cs" />
-    <Compile Include="Model\DataService.cs" />
-    <Compile Include="Model\IDataService.cs" />
+    <Compile Include="MVVMUtils\DataService.cs" />
+    <Compile Include="MVVMUtils\IDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
