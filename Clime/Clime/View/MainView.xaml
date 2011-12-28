@@ -1,60 +1,120 @@
-﻿<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" x:Class="Clime.View.MainView"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        x:Class="Clime.View.MainView"
         mc:Ignorable="d"
         Height="400"
         Width="700"
         Title="Clime"
-        DataContext="{Binding MainVm, Source={StaticResource Locator}}">
+        DataContext="{Binding MainVm, Source={StaticResource Locator}}" Icon="/Clime;component/Img/limeico.png">
 
-    <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.503,0.557" Margin="0,0,0,-0.313">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="20"/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="3*" />
-			<ColumnDefinition Width="2*" />
-		</Grid.ColumnDefinitions>
-
-		<Button Content="Show all measurements"
-			Height="25"
-			Margin="0,0,162,8"
-			VerticalAlignment="Bottom"
-			Command="{Binding ShowAllMeasurementsViewCommand}" d:LayoutOverrides="VerticalAlignment, Width" Width="150" HorizontalAlignment="Right" Grid.Row="1" />
+    <Grid x:Name="LayoutRoot"
+          RenderTransformOrigin="0.503,0.557"
+          Margin="0,0,0,-0.313">
         
-		<Button Content="Add new measurement"
-			HorizontalAlignment="Right"
-			Height="25"
-			Margin="0,0,8,8"
-			VerticalAlignment="Bottom"
-			Command="{Binding ShowNewMeasurementViewCommand}" Width="150" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" />
-		<TextBlock HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" Text="Filtering" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" d:LayoutOverrides="VerticalAlignment"/>
-		<ComboBox Margin="8,25.277,67,0" RenderTransformOrigin="0.719,-0.329" Height="19.929" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment, GridBox, VerticalMargin" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"/>
-		<ComboBox Margin="0,18.843,8,0" Height="26.363" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment, GridBox, VerticalMargin" Grid.Column="2" RenderTransformOrigin="1.978,0.537" HorizontalAlignment="Right" Width="55" Grid.Row="1"/>
-		<ListBox Grid.Column="1" Margin="8,49.206,8,8" Grid.ColumnSpan="2" Grid.Row="1" d:LayoutOverrides="VerticalAlignment, GridBox"/>
-		<chartingToolkit:Chart Margin="8,8,8,37" Title="Chart Title" Grid.Row="1">
-			<chartingToolkit:Chart.DataContext>
-				<PointCollection>1,10 2,20 3,30 4,40</PointCollection>
-			</chartingToolkit:Chart.DataContext>
-			<chartingToolkit:ColumnSeries DependentValuePath="X" IndependentValuePath="Y" ItemsSource="{Binding}"/>
-		</chartingToolkit:Chart>
-		<Menu Grid.ColumnSpan="2">
-			<MenuItem Header="File" Margin="0">
-				<MenuItem Header="Close" Click="MenuItem_Click"/>
-			</MenuItem>
-			<MenuItem Header="Measurement" Margin="0" VerticalAlignment="Top" HorizontalContentAlignment="Center">
-				<MenuItem Header="Add new"
-					Command="{Binding ShowNewMeasurementViewCommand}" />
-				<MenuItem Header="Show all"
-					Command="{Binding ShowAllMeasurementsViewCommand}" />
-			</MenuItem>
-			<MenuItem Header="Help" Margin="0" VerticalAlignment="Top">
-				<MenuItem Header="About" Command="{Binding ShowAboutViewCommand}"/>
-			</MenuItem>
-		</Menu>
-	</Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Content="Show all measurements"
+                Height="25"
+                Margin="0,0,162,8"
+                VerticalAlignment="Bottom"
+                Command="{Binding ShowAllMeasurementsViewCommand}"
+                d:LayoutOverrides="VerticalAlignment, Width"
+                Width="150"
+                HorizontalAlignment="Right"
+                Grid.Row="1" />
+
+        <Button Content="Add new measurement"
+                HorizontalAlignment="Right"
+                Height="25"
+                Margin="0,0,8,8"
+                VerticalAlignment="Bottom"
+                Command="{Binding ShowNewMeasurementViewCommand}"
+                Width="150"
+                Grid.Row="1"
+                d:LayoutOverrides="VerticalAlignment" />
+        
+        <TextBlock HorizontalAlignment="Left"
+                   Margin="8,8,0,0"
+                   TextWrapping="Wrap"
+                   Text="Filtering"
+                   VerticalAlignment="Top"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   d:LayoutOverrides="VerticalAlignment" />
+        
+        <ComboBox Margin="8,25.277,67,0"
+                  RenderTransformOrigin="0.719,-0.329"
+                  Height="19.929"
+                  VerticalAlignment="Top"
+                  d:LayoutOverrides="VerticalAlignment, GridBox, VerticalMargin"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2"
+                  Grid.Row="1" />
+        
+        <ComboBox Margin="0,18.843,8,0"
+                  Height="26.363"
+                  VerticalAlignment="Top"
+                  d:LayoutOverrides="VerticalAlignment, GridBox, VerticalMargin"
+                  Grid.Column="2"
+                  RenderTransformOrigin="1.978,0.537"
+                  HorizontalAlignment="Right"
+                  Width="55"
+                  Grid.Row="1" />
+        
+        <ListBox Grid.Column="1"
+                 Margin="8,49.206,8,8"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="1"
+                 d:LayoutOverrides="VerticalAlignment, GridBox" />
+        
+        <chartingToolkit:Chart Margin="8,8,8,37"
+                               Title="Chart Title"
+                               Grid.Row="1">
+            <chartingToolkit:Chart.DataContext>
+                <PointCollection>1,10 2,20 3,30 4,40</PointCollection>
+            </chartingToolkit:Chart.DataContext>
+            <chartingToolkit:ColumnSeries DependentValuePath="X"
+                                          IndependentValuePath="Y"
+                                          ItemsSource="{Binding}" />
+        </chartingToolkit:Chart>
+        
+        <Menu Grid.ColumnSpan="2">
+            
+            <MenuItem Header="File"
+                      Margin="0">
+                <MenuItem Header="Close"
+                          Click="MenuItem_Click" />
+            </MenuItem>
+            
+            <MenuItem Header="Measurement"
+                      Margin="0"
+                      VerticalAlignment="Top"
+                      HorizontalContentAlignment="Center">
+                <MenuItem Header="Add new"
+                          Command="{Binding ShowNewMeasurementViewCommand}" />
+                <MenuItem Header="Show all"
+                          Command="{Binding ShowAllMeasurementsViewCommand}" />
+            </MenuItem>
+            
+            <MenuItem Header="Help"
+                      Margin="0"
+                      VerticalAlignment="Top">
+                <MenuItem Header="About"
+                          Command="{Binding ShowAboutViewCommand}" />
+            </MenuItem>
+            
+        </Menu>
+        
+    </Grid>
 </Window>

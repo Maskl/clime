@@ -4,27 +4,75 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        DataContext="{Binding LoginVm, Source={StaticResource Locator}}" d:DesignWidth="282" d:DesignHeight="221" Width="280" Height="220" Title="Login to Clime">
+        DataContext="{Binding LoginVm, Source={StaticResource Locator}}"
+        d:DesignWidth="282"
+        d:DesignHeight="221"
+        Width="280"
+        Height="220"
+        Title="Login to Clime" Icon="/Clime;component/Img/limeico.png" Background="White">
 
     <Grid>
-    	<Grid.RowDefinitions>
-    		<RowDefinition/>
-    		<RowDefinition Height="41"/>
-    	</Grid.RowDefinitions>
-    	<Grid.ColumnDefinitions>
-    		<ColumnDefinition/>
-    		<ColumnDefinition/>
-    	</Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="41" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <Image Grid.Column="1" Margin="0,8,8,0" VerticalAlignment="Top" Source="/Clime;component/Img/lime.png" Width="120" Height="60" HorizontalAlignment="Right" d:LayoutOverrides="Width"/>
+        
         <Button Content="Login"
                 Margin="0,0,0,8"
-                Click="OnLoginButton" Height="25" VerticalAlignment="Bottom" RenderTransformOrigin="-3.175,-8.463" Grid.Row="1" HorizontalAlignment="Center" Width="110" Grid.ColumnSpan="2" />
-        <TextBlock Margin="8,8,8,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top"/>
-        <CheckBox Content="Anonymously" Margin="24,25.276,8,0" VerticalAlignment="Top"/>
-        <TextBlock Margin="8,44.276,8,0" TextWrapping="Wrap" Text="or as user" VerticalAlignment="Top" RenderTransformOrigin="0.537,-0.196"/>
-        <TextBox Margin="24,61.552,8,68.513" TextWrapping="Wrap" Text="login" d:LayoutOverrides="Height"/>
-        <PasswordBox Margin="24,0,8,42.579" VerticalAlignment="Bottom" Password="pass"/>
-        <RadioButton Content="English" Grid.Column="1" Margin="42.306,8,8,0" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
-        <RadioButton Content="Norsk" Grid.Column="1" Margin="42.306,28,8,0" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
-        <RadioButton Content="Polski" Grid.Column="1" Margin="42.306,48,8,0" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                Click="OnLoginButton"
+                Height="25"
+                VerticalAlignment="Bottom"
+                RenderTransformOrigin="-3.175,-8.463"
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                Width="110"
+                Grid.ColumnSpan="2" />
+        
+        <TextBlock Margin="8,8,8,0"
+                   TextWrapping="Wrap"
+                   Text="Login"
+                   VerticalAlignment="Top" />
+        
+        <CheckBox Content="Anonymously"
+                  Margin="24,25.276,8,0"
+                  VerticalAlignment="Top" />
+        
+        <TextBlock Margin="8,44.276,8,0"
+                   TextWrapping="Wrap"
+                   Text="or as user"
+                   VerticalAlignment="Top"
+                   RenderTransformOrigin="0.537,-0.196" />
+        
+        <TextBox Margin="24,61.552,8,68.513"
+                 TextWrapping="Wrap"
+                 Text="login"
+                 d:LayoutOverrides="Height" />
+        
+        <PasswordBox Margin="24,0,8,42.579"
+                     VerticalAlignment="Bottom"
+                     Password="pass" />
+        
+        <RadioButton Content="English"
+                     Grid.Column="1"
+                     Margin="0,83.088,18.616,0" VerticalAlignment="Top" HorizontalAlignment="Right" />
+        
+        <RadioButton Content="Norsk"
+                     Grid.Column="1"
+                     Margin="0,103.088,26.329,0" HorizontalAlignment="Right" VerticalAlignment="Top" />
+        
+        <RadioButton Content="Polski"
+                     Grid.Column="1"
+                     Margin="0,123.088,24.995,0"
+                     VerticalAlignment="Top" HorizontalAlignment="Right" />
+        <TextBlock Margin="0,65.812,28.763,0"
+        	TextWrapping="Wrap" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" ><Run Language="pl-pl" Text="Language"/></TextBlock>
     </Grid>
 </Window>
