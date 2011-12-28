@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using Clime.MVVMUtils;
 using Clime.MVVMUtils.DataServices;
@@ -18,11 +19,32 @@ namespace Clime.ViewModel
         public RelayCommand ShowNewMeasurementViewCommand { get; private set; }
         public RelayCommand ShowAboutViewCommand { get; private set; }
 
+
+        private int _selectedContinentId;
+        public int SelectedContinentId
+        {
+            get { return _selectedContinentId; }
+            set
+            {
+                if (_selectedContinentId == value) 
+                    return;
+
+                _selectedContinentId = value;
+
+                ContinentFilterSelected();
+
+                RaisePropertyChanged("SelectedContinentId");
+            }
+        }
+
+
+        public ObservableCollection<Country> CountriesRaw { get; set; }
         public ObservableCollection<Country> Countries { get; set; }
         public ObservableCollection<string> Continents { get; set; }
 
         public MainViewModel(IDataService dataService)
         {
+            CountriesRaw = new ObservableCollection<Country>();
             Countries = new ObservableCollection<Country>();
             Continents = new ObservableCollection<string>();
 
@@ -36,22 +58,44 @@ namespace Clime.ViewModel
             Messenger.Default.Register<Messages.NewMeasurementAddedMessage>(this, AddedNewMeasurement);
         }
 
-        private static void ShowAllMeasurementsView()
+        private void ShowAllMeasurementsView()
         {
             var newView = new View.AllMeasurementsView();
             newView.ShowDialog();
         }
 
-        private static void ShowAddNewMeasurementView()
+        private void ShowAddNewMeasurementView()
         {
             var newView = new View.NewMeasurementView();
             newView.ShowDialog();
         }
 
-        private static void ShowAboutView()
+        private void ShowAboutView()
         {
             var newView = new View.AboutView();
             newView.ShowDialog();
+        }
+
+        private bool IsCountryBelongToSelectedContinent(Country country)
+        {
+            // Meta Continent: "Whole World"
+            if (SelectedContinentId == 0)
+                return true;
+
+            // Meta Country: "Any Country"
+            if (country.ContinentId == ContinentsEnum.Special)
+                return true;
+
+            return country.ContinentId == (ContinentsEnum)(SelectedContinentId - 1);
+        }
+
+        private void ContinentFilterSelected()
+        {
+            Countries.Clear();
+            foreach (var country in CountriesRaw.Where(IsCountryBelongToSelectedContinent))
+            {
+                Countries.Add(country);
+            }
         }
 
         private void GeographyRepositoryLoaded(GeographyRepository countries, Exception error)
@@ -68,11 +112,13 @@ namespace Clime.ViewModel
                 Continents.Add(continent);
             }
 
-            Countries.Clear();
+            CountriesRaw.Clear();
             foreach (var country in countries.Countries)
             {
-                Countries.Add(country);
+                CountriesRaw.Add(country);
             }
+
+            ContinentFilterSelected();
         }
 
         private static void AddedNewMeasurement(Messages.NewMeasurementAddedMessage message)

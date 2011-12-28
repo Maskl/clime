@@ -62,8 +62,8 @@
                   VerticalAlignment="Top"
                   d:LayoutOverrides="VerticalAlignment, VerticalMargin"
                   Grid.Column="1"
-                  Grid.Row="1" 
-                  SelectedIndex="0"/>
+                  Grid.Row="1"
+                  SelectedIndex="{Binding Path=SelectedContinentId, Mode=TwoWay}"/>
 
         <ComboBox ItemsSource="{Binding Countries}"
                   Margin="0,25.277,8,0"
