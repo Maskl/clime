@@ -97,7 +97,7 @@
     </ApplicationDefinition>
     <Compile Include="MVVMUtils\Messages\NewMeasurementAddedMessage.cs" />
     <Compile Include="Model\Country.cs" />
-    <Compile Include="Model\CountryRepository.cs" />
+    <Compile Include="Model\GeographyRepository.cs" />
     <Compile Include="Model\Measurement.cs" />
     <Compile Include="MVVMUtils\Notifier.cs" />
     <Compile Include="ViewModel\AboutViewModel.cs" />
@@ -142,7 +142,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MVVMUtils\DesignDataService.cs" />
+    <Compile Include="MVVMUtils\DataServices\DesignDataService.cs" />
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -153,8 +153,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MVVMUtils\DataService.cs" />
-    <Compile Include="MVVMUtils\IDataService.cs" />
+    <Compile Include="MVVMUtils\DataServices\DataService.cs" />
+    <Compile Include="MVVMUtils\DataServices\IDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

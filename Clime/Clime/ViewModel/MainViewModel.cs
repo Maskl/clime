@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using Clime.MVVMUtils;
+using Clime.MVVMUtils.DataServices;
 using GalaSoft.MvvmLight;
 using Clime.Model;
 using GalaSoft.MvvmLight.Command;
@@ -18,13 +19,15 @@ namespace Clime.ViewModel
         public RelayCommand ShowAboutViewCommand { get; private set; }
 
         public ObservableCollection<Country> Countries { get; set; }
+        public ObservableCollection<string> Continents { get; set; }
 
         public MainViewModel(IDataService dataService)
         {
             Countries = new ObservableCollection<Country>();
+            Continents = new ObservableCollection<string>();
 
             _dataService = dataService;
-            _dataService.GetCountries(CountriesLoaded);
+            _dataService.GetGeographyRepository(GeographyRepositoryLoaded);
 
             ShowAllMeasurementsViewCommand = new RelayCommand(ShowAllMeasurementsView);
             ShowNewMeasurementViewCommand = new RelayCommand(ShowAddNewMeasurementView);
@@ -51,12 +54,18 @@ namespace Clime.ViewModel
             newView.ShowDialog();
         }
 
-        private void CountriesLoaded(CountryRepository countries, Exception error)
+        private void GeographyRepositoryLoaded(GeographyRepository countries, Exception error)
         {
             if (error != null)
             {
                 Messenger.Default.Send(new DialogMessage(error.ToString(), null) { Button = MessageBoxButton.OK, Caption = "Error" });
                 return;
+            }
+
+            Continents.Clear();
+            foreach (var continent in countries.Continents)
+            {
+                Continents.Add(continent);
             }
 
             Countries.Clear();

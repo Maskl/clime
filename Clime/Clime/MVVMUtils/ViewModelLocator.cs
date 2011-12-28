@@ -1,4 +1,5 @@
-﻿using Clime.ViewModel;
+﻿using Clime.MVVMUtils.DataServices;
+using Clime.ViewModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;

@@ -7,13 +7,39 @@ using System.Windows;
 
 namespace Clime.Model
 {
-    public class CountryRepository : DependencyObject
+    public class GeographyRepository : DependencyObject
     {
+        public ObservableCollection<string> Continents { get; set; }
         public ObservableCollection<Country> Countries { get; set; }
 
-        public void Create()
+        public void CreateAll()
         {
+            // todo
+            CreateAllDesign();
+        }
+
+        public void CreateAllDesign()
+        {
+            Continents = new ObservableCollection<string>();
             Countries = new ObservableCollection<Country>();
+
+            AddContinents();
+            AddDummiesCountries();
+        }
+
+        public void AddContinents()
+        {
+            Continents.Add("Europe");
+            Continents.Add("North America");
+            Continents.Add("South America");
+            Continents.Add("Africa");
+            Continents.Add("Asia");
+            Continents.Add("Australia");
+            Continents.Add("Antarctica");
+        }
+
+        public void AddDummiesCountries()
+        {
             Countries.Add(new Country("AD", "Andorra ", "ad.png"));
             Countries.Add(new Country("AE", "United Arab Emirates ", "ae.png"));
             Countries.Add(new Country("AF", "Afghanistan ", "af.png"));
@@ -263,27 +289,6 @@ namespace Clime.Model
             //Countries.Add(new Country("ZA", "South Africa ", "za.png"));
             //Countries.Add(new Country("ZM", "Zambia ", "zm.png"));
             //Countries.Add(new Country("ZW", "Zimbabwe ", "zw.png"));
-        }
-
-        public void CreateDummy()
-        {
-            Countries = new ObservableCollection<Country>();
-            Countries.Add(new Country("AD", "Andorra ", "ad.png"));
-            Countries.Add(new Country("AE", "United Arab Emirates ", "ae.png"));
-            Countries.Add(new Country("AF", "Afghanistan ", "af.png"));
-            Countries.Add(new Country("AG", "Antigua and Barbuda ", "ag.png"));
-            Countries.Add(new Country("AI", "Anguilla ", "ai.png"));
-            Countries.Add(new Country("AL", "Albania ", "al.png"));
-            Countries.Add(new Country("AM", "Armenia ", "am.png"));
-            Countries.Add(new Country("AO", "Angola ", "ao.png"));
-            Countries.Add(new Country("AQ", "Antarctica ", "aq.png"));
-            Countries.Add(new Country("AR", "Argentina ", "ar.png"));
-            Countries.Add(new Country("AS", "American Samoa ", "as.png"));
-            Countries.Add(new Country("AT", "Austria ", "at.png"));
-            Countries.Add(new Country("AU", "Australia ", "au.png"));
-            Countries.Add(new Country("AW", "Aruba ", "aw.png"));
-            Countries.Add(new Country("AX", "Aland Islands ", "ax.png"));
-            Countries.Add(new Country("AZ", "Azerbaijan ", "az.png"));
         }
     }
 }
