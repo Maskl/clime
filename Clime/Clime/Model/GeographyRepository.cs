@@ -7,7 +7,20 @@ using System.Windows;
 
 namespace Clime.Model
 {
-    public class GeographyRepository : DependencyObject
+    enum ContinentsEnum {
+        Africa,
+        Antarctica,
+        Asia,
+        Australia,
+        Europe,
+        NorthAmerica,
+        SouthAmerica,
+        Special,
+        DontKnow,
+        Trash
+    }
+
+    class GeographyRepository : DependencyObject
     {
         public ObservableCollection<string> Continents { get; set; }
         public ObservableCollection<Country> Countries { get; set; }
@@ -29,33 +42,35 @@ namespace Clime.Model
 
         public void AddContinents()
         {
+            Continents.Add("Whole World");
+            Continents.Add("Africa");
+            Continents.Add("Antarctica");
+            Continents.Add("Asia");
+            Continents.Add("Australia");
             Continents.Add("Europe");
             Continents.Add("North America");
             Continents.Add("South America");
-            Continents.Add("Africa");
-            Continents.Add("Asia");
-            Continents.Add("Australia");
-            Continents.Add("Antarctica");
         }
 
         public void AddDummiesCountries()
         {
-            Countries.Add(new Country("AD", "Andorra ", "ad.png"));
-            Countries.Add(new Country("AE", "United Arab Emirates ", "ae.png"));
-            Countries.Add(new Country("AF", "Afghanistan ", "af.png"));
-            Countries.Add(new Country("AG", "Antigua and Barbuda ", "ag.png"));
-            Countries.Add(new Country("AI", "Anguilla ", "ai.png"));
-            Countries.Add(new Country("AL", "Albania ", "al.png"));
-            Countries.Add(new Country("AM", "Armenia ", "am.png"));
-            Countries.Add(new Country("AO", "Angola ", "ao.png"));
-            Countries.Add(new Country("AQ", "Antarctica ", "aq.png"));
-            Countries.Add(new Country("AR", "Argentina ", "ar.png"));
-            Countries.Add(new Country("AS", "American Samoa ", "as.png"));
-            Countries.Add(new Country("AT", "Austria ", "at.png"));
-            Countries.Add(new Country("AU", "Australia ", "au.png"));
-            Countries.Add(new Country("AW", "Aruba ", "aw.png"));
-            Countries.Add(new Country("AX", "Aland Islands ", "ax.png"));
-            Countries.Add(new Country("AZ", "Azerbaijan ", "az.png"));
+            Countries.Add(new Country(ContinentsEnum.Special, "All", "Any country ", "catalonia.png"));
+            Countries.Add(new Country(ContinentsEnum.Europe, "AD", "Andorra ", "ad.png"));
+            Countries.Add(new Country(ContinentsEnum.Asia, "AE", "United Arab Emirates ", "ae.png"));
+            Countries.Add(new Country(ContinentsEnum.Asia, "AF", "Afghanistan ", "af.png"));
+            Countries.Add(new Country(ContinentsEnum.NorthAmerica, "AG", "Antigua and Barbuda ", "ag.png"));
+            Countries.Add(new Country(ContinentsEnum.NorthAmerica, "AI", "Anguilla ", "ai.png"));
+            Countries.Add(new Country(ContinentsEnum.Europe, "AL", "Albania ", "al.png"));
+            Countries.Add(new Country(ContinentsEnum.Europe, "AM", "Armenia ", "am.png"));
+            Countries.Add(new Country(ContinentsEnum.Africa, "AO", "Angola ", "ao.png"));
+            Countries.Add(new Country(ContinentsEnum.Antarctica, "AQ", "Antarctica ", "aq.png"));
+            Countries.Add(new Country(ContinentsEnum.SouthAmerica, "AR", "Argentina ", "ar.png"));
+            Countries.Add(new Country(ContinentsEnum.Australia, "AS", "American Samoa ", "as.png"));
+            Countries.Add(new Country(ContinentsEnum.Europe, "AT", "Austria ", "at.png"));
+            Countries.Add(new Country(ContinentsEnum.Australia, "AU", "Australia ", "au.png"));
+            Countries.Add(new Country(ContinentsEnum.NorthAmerica, "AW", "Aruba ", "aw.png"));
+            Countries.Add(new Country(ContinentsEnum.Trash, "AX", "Aland Islands ", "ax.png"));
+            Countries.Add(new Country(ContinentsEnum.Europe, "AZ", "Azerbaijan ", "az.png"));
             //Countries.Add(new Country("BA", "Bosnia and Herzegovina ", "ba.png"));
             //Countries.Add(new Country("BB", "Barbados ", "bb.png"));
             //Countries.Add(new Country("BD", "Bangladesh ", "bd.png"));

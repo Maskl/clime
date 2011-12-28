@@ -3,7 +3,7 @@ using Clime.Model;
 
 namespace Clime.MVVMUtils.DataServices
 {
-    public class DataService : IDataService
+    class DataService : IDataService
     {
         public void GetGeographyRepository(Action<GeographyRepository, Exception> callback)
         {

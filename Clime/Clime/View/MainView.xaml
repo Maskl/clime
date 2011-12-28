@@ -56,25 +56,24 @@
                    d:LayoutOverrides="VerticalAlignment" />
 
         <ComboBox ItemsSource="{Binding Continents}"
-                  Margin="8,25.277,67,0"
+                  Margin="8,25.277,96,0"
                   RenderTransformOrigin="0.719,-0.329"
                   Height="19.929"
                   VerticalAlignment="Top"
-                  d:LayoutOverrides="VerticalAlignment, GridBox, VerticalMargin"
+                  d:LayoutOverrides="VerticalAlignment, VerticalMargin"
                   Grid.Column="1"
-                  Grid.ColumnSpan="2"
                   Grid.Row="1" 
                   SelectedIndex="0"/>
 
         <ComboBox ItemsSource="{Binding Countries}"
-                  Margin="0,18.843,8,0"
-                  Height="26.363"
+                  Margin="0,25.277,8,0"
+                  Height="19.929"
                   VerticalAlignment="Top"
-                  d:LayoutOverrides="VerticalAlignment, GridBox, VerticalMargin"
-                  Grid.Column="2"
+                  d:LayoutOverrides="VerticalAlignment"
+                  Grid.Column="1"
                   RenderTransformOrigin="1.978,0.537"
                   HorizontalAlignment="Right"
-                  Width="55"
+                  Width="84"
                   Grid.Row="1"
                   SelectedIndex="0">
 

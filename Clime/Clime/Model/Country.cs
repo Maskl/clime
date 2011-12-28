@@ -3,15 +3,17 @@ using System.Windows;
 
 namespace Clime.Model
 {
-    public class Country : DependencyObject
+    class Country : DependencyObject
     {
-        public Country(string countryCode, string name, string flagImageUrl)
+        public Country(ContinentsEnum continentId, string countryCode, string name, string flagImageUrl)
         {
+            ContinentId = continentId;
             CountryCode = countryCode;
             Name = name;
             FlagImageUrl = flagImageUrl;
         }
 
+        public ContinentsEnum ContinentId { get; private set; }
         public string Name { get; private set; }
         public string CountryCode { get; private set; }
         
