@@ -22,8 +22,9 @@ namespace Clime.Model
 
     class GeographyRepository : DependencyObject
     {
-        public ObservableCollection<string> Continents { get; set; }
-        public ObservableCollection<Country> Countries { get; set; }
+        public List<string> Continents { get; set; }
+        public List<Country> Countries { get; set; }
+        public List<City> Cities { get; set; }
 
         public void CreateAll()
         {
@@ -33,11 +34,36 @@ namespace Clime.Model
 
         public void CreateAllDesign()
         {
-            Continents = new ObservableCollection<string>();
-            Countries = new ObservableCollection<Country>();
+            Continents = new List<string>();
+            Countries = new List<Country>();
+            Cities = new List<City>();
 
             AddContinents();
             AddDummiesCountries();
+            AddDummiesCities(100);
+        }
+
+        private static Random random = new Random();
+        private void AddDummiesCities(int citiesCount)
+        {
+            for (var i = 0; i < citiesCount; ++i)
+            {
+                var count = Countries[random.Next(Countries.Count)];
+                var x = (int) count.ContinentId + 1;
+                x = (x >= Continents.Count) ? Continents.Count - 1 : x;
+                var cont = Continents[x];
+                var name = "" + cont[0] + cont[1] + count.Name.ToLower()[0];
+
+                for (var n = 0; n < 10; ++n)
+                {
+                    if (random.Next(10) < n)
+                        break;
+
+                    name += (char) ('a' + random.Next(26));
+                }
+
+                Cities.Add(new City(count.CountryCode, name));
+            }
         }
 
         public void AddContinents()

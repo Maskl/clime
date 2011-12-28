@@ -95,6 +95,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\City.cs" />
     <Compile Include="MVVMUtils\Messages\NewMeasurementAddedMessage.cs" />
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\GeographyRepository.cs" />
