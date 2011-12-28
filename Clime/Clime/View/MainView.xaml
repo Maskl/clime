@@ -82,26 +82,23 @@
                   Grid.Row="1">
 
             <ComboBox.ItemTemplate>
-            <DataTemplate>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
 
-                    <Image HorizontalAlignment="Center"
-                           VerticalAlignment="Top"
-                           Source="{Binding FlagImageUrl}"
-                           Margin="5,5,10,0"
-                           Height="20" />
+                        <Image Source="{Binding FlagImageUrl}"
+                               Height="11"/>
 
-                    <TextBlock Grid.Column="1"
-                               TextWrapping="Wrap"
-                               Text="{Binding CountryCode}" />
+                        <TextBlock Grid.Column="1"
+                                   TextWrapping="Wrap"
+                                   Text="{Binding CountryCode}" />
 
-                </Grid>
+                    </Grid>
 
-            </DataTemplate>
+                </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
 

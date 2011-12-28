@@ -14,7 +14,13 @@ namespace Clime.Model
 
         public string Name { get; private set; }
         public string CountryCode { get; private set; }
-        public string FlagImageUrl { get; private set; }
+        
+        private string _flagImageUrl;
+        public string FlagImageUrl
+        {
+            get { return "/Clime;component/Img/Flags/" + _flagImageUrl; }
+            private set { _flagImageUrl = value; }
+        }
     }
 }
 
