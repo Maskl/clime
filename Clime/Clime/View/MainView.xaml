@@ -3,22 +3,91 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
-        x:Class="Clime.View.MainView"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras"
+        xmlns:Model="clr-namespace:Clime.Model" x:Class="Clime.View.MainView"
         mc:Ignorable="d"
         Height="400"
         Width="700"
+        
+        x:Name="mainWindow"
+        
         Title="Clime"
-        DataContext="{Binding MainVm, Source={StaticResource Locator}}" Icon="/Clime;component/Img/limeico.png">
+        DataContext="{Binding MainVm, Source={StaticResource Locator}}"
+        Icon="/Clime;component/Img/limeico.png">
+    
+    <Window.Resources>
 
+
+
+
+        <DataTemplate x:Key="FriendTemplate">
+            <Grid Height="110"
+                  Background="Red">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <!--<Image HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Source="{Binding Model.PictureUri}"
+                       Margin="5,5,10,0"
+                       Height="100" />-->
+
+                <StackPanel Grid.Column="1">
+                    <TextBlock TextWrapping="Wrap"
+                               Text="{Binding CountriesCollection.Name}"
+                               FontFamily="Segoe UI"
+                               FontSize="18" />
+
+                    <TextBlock TextWrapping="Wrap"
+                               Text="{Binding Model:CountryRepository.CountriesCollection}"
+                               FontFamily="Segoe UI"
+                               FontSize="24" />
+
+                    <TextBlock TextWrapping="Wrap"
+                               Text="{Binding Model:Country.Name}"
+                               FontFamily="Segoe UI"
+                               FontSize="18"
+                               Foreground="White" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <DataTemplate x:Key="itemsTemplate">
+            <TextBlock HorizontalAlignment="Center"
+                       Margin="0,0,0,0"
+                       VerticalAlignment="Center"
+                       FontSize="14"
+                       FontWeight="Bold"
+                       TextWrapping="Wrap"
+                       Text="{Binding Name}" />
+        </DataTemplate>
+    </Window.Resources>
+    
     <Grid x:Name="LayoutRoot"
           RenderTransformOrigin="0.503,0.557"
           Margin="0,0,0,-0.313">
         
+
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
             <ColumnDefinition Width="2*" />
@@ -43,7 +112,7 @@
                 Width="150"
                 Grid.Row="1"
                 d:LayoutOverrides="VerticalAlignment" />
-        
+
         <TextBlock HorizontalAlignment="Left"
                    Margin="8,8,0,0"
                    TextWrapping="Wrap"
@@ -52,7 +121,7 @@
                    Grid.Column="1"
                    Grid.Row="1"
                    d:LayoutOverrides="VerticalAlignment" />
-        
+
         <ComboBox Margin="8,25.277,67,0"
                   RenderTransformOrigin="0.719,-0.329"
                   Height="19.929"
@@ -61,7 +130,7 @@
                   Grid.Column="1"
                   Grid.ColumnSpan="2"
                   Grid.Row="1" />
-        
+
         <ComboBox Margin="0,18.843,8,0"
                   Height="26.363"
                   VerticalAlignment="Top"
@@ -71,13 +140,74 @@
                   HorizontalAlignment="Right"
                   Width="55"
                   Grid.Row="1" />
-        
-        <ListBox Grid.Column="1"
+
+        <!--<ListBox Grid.Column="1"
                  Margin="8,49.206,8,8"
                  Grid.ColumnSpan="2"
                  Grid.Row="1"
-                 d:LayoutOverrides="VerticalAlignment, GridBox" />
-        
+                 d:LayoutOverrides="VerticalAlignment, GridBox"
+                 ItemsSource="{Binding CountriesX}" ItemBindingGroup="{Binding CountriesX}">
+            <ListBox.ItemTemplate>
+
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Command="{Binding RemoveCommand}">
+                            <Image Source="/FileUploadApplication;component/Resources/delete.png" />
+                        </Button>
+                        <Image Source="/FileUploadApplication;component/Resources/delete.png">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cmd:EventToCommand Command="{Binding RemoveCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Image>
+                        <TextBlock Text=" " />
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>-->
+
+        <!--<ItemsControl Grid.Column="1"
+                      Margin="8,49.206,8,8"
+                      Grid.ColumnSpan="2"
+                      Grid.Row="1"
+                      ItemsSource="{Binding CountriesX}"
+                      ItemTemplate="{StaticResource itemsTemplate}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>-->
+
+                <!--ItemContainerStyle="{StaticResource ListBoxItemStyle1}"-->
+                 <!--SelectedItem="{Binding SelectedFriend, Mode=TwoWay}"-->
+        <!--<ListBox ItemsSource="{Binding Countries}"
+                 ItemTemplate="{StaticResource FriendTemplate}"
+ 
+                 Grid.Column="1"
+                 Margin="8,49.206,8,8"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="1" />-->
+
+
+        <ListBox ItemsSource="{Binding CountriesX}"
+                 Grid.Column="1"
+                 Margin="8,49.206,8,8"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="1">
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding FlagImageUrl}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+
+        </ListBox>
+
+
         <chartingToolkit:Chart Margin="8,8,8,37"
                                Title="Chart Title"
                                Grid.Row="1">
@@ -88,15 +218,15 @@
                                           IndependentValuePath="Y"
                                           ItemsSource="{Binding}" />
         </chartingToolkit:Chart>
-        
+
         <Menu Grid.ColumnSpan="2">
-            
+
             <MenuItem Header="File"
                       Margin="0">
                 <MenuItem Header="Close"
                           Click="MenuItem_Click" />
             </MenuItem>
-            
+
             <MenuItem Header="Measurement"
                       Margin="0"
                       VerticalAlignment="Top"
@@ -106,15 +236,15 @@
                 <MenuItem Header="Show all"
                           Command="{Binding ShowAllMeasurementsViewCommand}" />
             </MenuItem>
-            
+
             <MenuItem Header="Help"
                       Margin="0"
                       VerticalAlignment="Top">
                 <MenuItem Header="About"
                           Command="{Binding ShowAboutViewCommand}" />
             </MenuItem>
-            
+
         </Menu>
-        
+
     </Grid>
 </Window>

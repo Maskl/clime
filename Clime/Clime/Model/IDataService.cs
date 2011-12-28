@@ -8,5 +8,7 @@ namespace Clime.Model
     public interface IDataService
     {
         void GetData(Action<DataItem, Exception> callback);
+
+        void GetCountries(Action<CountryRepository, Exception> callback);
     }
 }

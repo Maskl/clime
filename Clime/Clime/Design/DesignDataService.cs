@@ -12,5 +12,12 @@ namespace Clime.Design
             var item = new DataItem("Welcome to MVVM Light [design]");
             callback(item, null);
         }
+
+        public void GetCountries(Action<CountryRepository, Exception> callback)
+        {
+            var countries = new CountryRepository();
+            countries.CreateDummy();
+            callback(countries, null);
+        }
     }
 }

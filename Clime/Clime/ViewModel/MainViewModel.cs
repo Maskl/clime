@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using GalaSoft.MvvmLight;
 using Clime.Model;
 using GalaSoft.MvvmLight.Command;
@@ -35,8 +36,85 @@ namespace Clime.ViewModel
             }
         }
 
+        public const string CountriesPropertyName = "Countries";
+        private CountryRepository _countries = null;
+        public CountryRepository Countries
+        {
+            get
+            {
+                return _countries;
+            }
+
+            set
+            {
+                if (_countries == value)
+                {
+                    return;
+                }
+
+                _countries = value;
+                RaisePropertyChanged(CountriesPropertyName);
+            }
+        }
+
+
+
+        public ObservableCollection<Country> CountriesY
+        {
+            get
+            {
+                return _countries.GetAll();
+            }
+        }
+
+
+        private static readonly string[] _dummyCountries = {
+                                                     "pl", "Poland", "PolishImage",
+                                                     "us", "United States", "USImage",
+                                                     "jp", "Japan", "JapanImage",
+                                                     "ua", "Ukraine", "UkraineImage",
+                                                     "it", "Italy", "ItalyImage",
+                                                     "ar", "Argentina", "ArgentinaImage"
+                                                 };
+
+        public const string CountriesPropertyNameX = "CountriesX";
+        private ObservableCollection<Country> _countriesX = null;
+        public ObservableCollection<Country> CountriesX
+        {
+            get
+            {
+                return _countriesX;
+            }
+
+            set
+            {
+                if (_countriesX == value)
+                {
+                    return;
+                }
+
+                _countriesX = value;
+                RaisePropertyChanged(CountriesPropertyNameX);
+            }
+        }
+
+
+
+        public void Create()
+        {
+            _countriesX = new ObservableCollection<Country>();
+            for (int i = 0; i < _dummyCountries.Length; i += 3)
+            {
+                var c = new Country(_dummyCountries[i], _dummyCountries[i + 1], _dummyCountries[i + 2]);
+                _countriesX.Add(c);
+            }
+        }
+
+
         public MainViewModel(IDataService dataService)
         {
+            Create();
+
             _dataService = dataService;
             _dataService.GetData(
                 (item, error) =>
@@ -48,6 +126,18 @@ namespace Clime.ViewModel
                     }
 
                     WelcomeTitle = item.Title;
+                });
+
+            _dataService.GetCountries(
+                (countries, error) =>
+                {
+                    if (error != null)
+                    {
+                        // Report error here
+                        return;
+                    }
+
+                    _countries = countries;
                 });
 
             ShowAllMeasurementsViewCommand = new RelayCommand(ShowAllMeasurementsView);
