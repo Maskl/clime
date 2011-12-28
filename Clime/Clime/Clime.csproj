@@ -99,7 +99,6 @@
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\CountryRepository.cs" />
     <Compile Include="Model\Measurement.cs" />
-    <Compile Include="MVVMUtils\Bootstrapper.cs" />
     <Compile Include="MVVMUtils\Notifier.cs" />
     <Compile Include="ViewModel\AboutViewModel.cs" />
     <Compile Include="ViewModel\AllMeasurementsViewModel.cs" />

@@ -6,7 +6,7 @@ using Clime.Model;
 
 namespace Clime.MVVMUtils
 {
-    public class ViewModelLocator
+    class ViewModelLocator
     {
         static ViewModelLocator()
         {
@@ -14,7 +14,7 @@ namespace Clime.MVVMUtils
 
             if (ViewModelBase.IsInDesignModeStatic)
             {
-                SimpleIoc.Default.Register<IDataService, Design.DesignDataService>();
+                SimpleIoc.Default.Register<IDataService, DesignDataService>();
             }
             else
             {

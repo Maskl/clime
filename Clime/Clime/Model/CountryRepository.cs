@@ -39,10 +39,5 @@ namespace Clime.Model
                 Countries.Add(c);
             }
         }
-
-        public ObservableCollection<Country> GetAll()
-        {
-            return Countries;
-        }
     }
 }

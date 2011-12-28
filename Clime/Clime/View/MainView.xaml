@@ -192,7 +192,7 @@
                  Grid.Row="1" />-->
 
 
-        <ListBox ItemsSource="{Binding CountriesX}"
+        <ListBox ItemsSource="{Binding Countries}"
                  Grid.Column="1"
                  Margin="8,49.206,8,8"
                  Grid.ColumnSpan="2"
