@@ -6,11 +6,14 @@ namespace Clime.Model
     class City : DependencyObject
     {
         private static Random random = new Random();
-        public City(string countryCode, string name, string countryFlagImageUrl)
+        public City(string countryCode, string name, string countryFlagImageUrl, Country countryOwner)
         {
             CountryCode = countryCode;
-            CountryFlagImageUrl = countryFlagImageUrl;
             Name = name;
+
+            CountryFlagImageUrl = countryFlagImageUrl; //temp
+            CountryOwner = countryOwner; //temp
+            
 
             TemperatureMin = 666;
             TemperatureMax = 666;
@@ -30,7 +33,8 @@ namespace Clime.Model
 
         public string Name { get; private set; }
         public string CountryCode { get; private set; }
-        public string CountryFlagImageUrl { get; private set; }
+        public string CountryFlagImageUrl { get; private set; } //temp
+        public Country CountryOwner { get; private set; } //temp
         public int TemperatureMin { get; private set; }
         public int TemperatureMax { get; private set; }
         public int TemperatureAvg { get; private set; }

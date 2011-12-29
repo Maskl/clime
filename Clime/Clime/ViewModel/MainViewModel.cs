@@ -37,6 +37,24 @@ namespace Clime.ViewModel
             }
         }
 
+        private Country _selectedCountry;
+        public Country SelectedCountry
+        {
+            get { return _selectedCountry; }
+            set
+            {
+                if (_selectedCountry == value) 
+                    return;
+
+                _selectedCountry = value;
+
+                CountryFilterSelected();
+
+                RaisePropertyChanged("SelectedCountry");
+            }
+        }
+        
+
 
         public ObservableCollection<Country> CountriesRaw { get; set; }
         public ObservableCollection<Country> Countries { get; set; }
@@ -99,6 +117,35 @@ namespace Clime.ViewModel
             foreach (var country in CountriesRaw.Where(IsCountryBelongToSelectedContinent))
             {
                 Countries.Add(country);
+            }
+
+            SelectedCountry = Countries[0];
+        }
+
+        private bool IsCityBelongToSelectedCountry(City city)
+        {
+            if (SelectedCountry == null)
+                return false;
+
+            // Meta Country: "Any Country"
+            if (SelectedCountry.ContinentId == ContinentsEnum.Special)
+            {
+                return IsCountryBelongToSelectedContinent(city.CountryOwner);
+            }
+
+            return city.CountryCode == SelectedCountry.CountryCode;
+        }
+
+        private void CountryFilterSelected()
+        {
+            Cities.Clear();
+
+            if (SelectedCountry == null)
+                return;
+
+            foreach (var city in CitiesRaw.Where(IsCityBelongToSelectedCountry))
+            {
+                Cities.Add(city);
             }
         }
 

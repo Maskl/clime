@@ -75,7 +75,7 @@
                   HorizontalAlignment="Right"
                   Width="84"
                   Grid.Row="1"
-                  SelectedIndex="0">
+                  SelectedItem="{Binding Path=SelectedCountry, Mode=TwoWay}">
 
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -98,7 +98,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <ListBox ItemsSource="{Binding CitiesRaw}"
+        <ListBox ItemsSource="{Binding Cities}"
                  Grid.Column="1"
                  Margin="8,49.206,8,8"
                  Grid.ColumnSpan="2"
@@ -125,9 +125,9 @@
                                            Text="{Binding Name}" />
                             </StackPanel>
 
-                                <TextBlock TextWrapping="Wrap"
-                                           Text="{Binding TemperatureDescription}" />
-                     
+                            <TextBlock TextWrapping="Wrap"
+                                       Text="{Binding TemperatureDescription}" />
+
                         </StackPanel>
                     </Grid>
 

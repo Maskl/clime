@@ -43,29 +43,6 @@ namespace Clime.Model
             AddDummiesCities(100);
         }
 
-        private static Random random = new Random();
-        private void AddDummiesCities(int citiesCount)
-        {
-            for (var i = 0; i < citiesCount; ++i)
-            {
-                var count = Countries[random.Next(Countries.Count)];
-                var x = (int) count.ContinentId + 1;
-                x = (x >= Continents.Count) ? Continents.Count - 1 : x;
-                var cont = Continents[x];
-                var name = "" + cont[0] + cont[1] + count.Name.ToLower()[0];
-
-                for (var n = 0; n < 10; ++n)
-                {
-                    if (random.Next(10) < n)
-                        break;
-
-                    name += (char) ('a' + random.Next(26));
-                }
-
-                Cities.Add(new City(count.CountryCode, name, count.FlagImageUrl));
-            }
-        }
-
         public void AddContinents()
         {
             Continents.Add("Whole World");
@@ -330,6 +307,29 @@ namespace Clime.Model
             //Countries.Add(new Country("ZA", "South Africa ", "za.png"));
             //Countries.Add(new Country("ZM", "Zambia ", "zm.png"));
             //Countries.Add(new Country("ZW", "Zimbabwe ", "zw.png"));
+        }
+
+        private static readonly Random random = new Random();
+        private void AddDummiesCities(int citiesCount)
+        {
+            for (var i = 0; i < citiesCount; ++i)
+            {
+                var count = Countries[random.Next(Countries.Count - 1) + 1];
+                var x = (int)count.ContinentId + 1;
+                x = (x >= Continents.Count) ? Continents.Count - 1 : x;
+                var cont = Continents[x];
+                var name = "" + cont[0] + cont[1] + count.Name.ToLower()[0];
+
+                for (var n = 0; n < 10; ++n)
+                {
+                    if (random.Next(10) < n)
+                        break;
+
+                    name += (char)('a' + random.Next(26));
+                }
+
+                Cities.Add(new City(count.CountryCode, name, count.FlagImageUrl, count));
+            }
         }
     }
 }
