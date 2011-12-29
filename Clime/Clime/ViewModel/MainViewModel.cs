@@ -40,12 +40,16 @@ namespace Clime.ViewModel
 
         public ObservableCollection<Country> CountriesRaw { get; set; }
         public ObservableCollection<Country> Countries { get; set; }
+        public ObservableCollection<City> CitiesRaw { get; set; }
+        public ObservableCollection<City> Cities { get; set; }
         public ObservableCollection<string> Continents { get; set; }
 
         public MainViewModel(IDataService dataService)
         {
             CountriesRaw = new ObservableCollection<Country>();
             Countries = new ObservableCollection<Country>();
+            CitiesRaw = new ObservableCollection<City>();
+            Cities = new ObservableCollection<City>();
             Continents = new ObservableCollection<string>();
 
             _dataService = dataService;
@@ -98,7 +102,7 @@ namespace Clime.ViewModel
             }
         }
 
-        private void GeographyRepositoryLoaded(GeographyRepository countries, Exception error)
+        private void GeographyRepositoryLoaded(GeographyRepository repo, Exception error)
         {
             if (error != null)
             {
@@ -107,15 +111,21 @@ namespace Clime.ViewModel
             }
 
             Continents.Clear();
-            foreach (var continent in countries.Continents)
+            foreach (var continent in repo.Continents)
             {
                 Continents.Add(continent);
             }
 
             CountriesRaw.Clear();
-            foreach (var country in countries.Countries)
+            foreach (var country in repo.Countries)
             {
                 CountriesRaw.Add(country);
+            }
+
+            CitiesRaw.Clear();
+            foreach (var city in repo.Cities)
+            {
+                CitiesRaw.Add(city);
             }
 
             ContinentFilterSelected();

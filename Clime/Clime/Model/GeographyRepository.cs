@@ -62,7 +62,7 @@ namespace Clime.Model
                     name += (char) ('a' + random.Next(26));
                 }
 
-                Cities.Add(new City(count.CountryCode, name));
+                Cities.Add(new City(count.CountryCode, name, count.FlagImageUrl));
             }
         }
 

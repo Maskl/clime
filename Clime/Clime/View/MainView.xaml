@@ -63,7 +63,7 @@
                   d:LayoutOverrides="VerticalAlignment, VerticalMargin"
                   Grid.Column="1"
                   Grid.Row="1"
-                  SelectedIndex="{Binding Path=SelectedContinentId, Mode=TwoWay}"/>
+                  SelectedIndex="{Binding Path=SelectedContinentId, Mode=TwoWay}" />
 
         <ComboBox ItemsSource="{Binding Countries}"
                   Margin="0,25.277,8,0"
@@ -86,7 +86,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Image Source="{Binding FlagImageUrl}"
-                               Height="11"/>
+                               Height="11" />
 
                         <TextBlock Grid.Column="1"
                                    TextWrapping="Wrap"
@@ -98,7 +98,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <ListBox ItemsSource="{Binding Countries}"
+        <ListBox ItemsSource="{Binding CitiesRaw}"
                  Grid.Column="1"
                  Margin="8,49.206,8,8"
                  Grid.ColumnSpan="2"
@@ -113,16 +113,21 @@
 
                         <Image HorizontalAlignment="Center"
                                VerticalAlignment="Top"
-                               Source="{Binding FlagImageUrl}"
-                               Margin="5,5,10,0"
-                               Height="20" />
-
+                               Source="/Clime;component/Img/limeico.png"
+                               Margin="4,4,8,4" />
                         <StackPanel Grid.Column="1">
-                            <TextBlock TextWrapping="Wrap"
-                                       Text="{Binding Name}" />
+                            <StackPanel Orientation="Horizontal">
+                                <Image HorizontalAlignment="Center"
+                                       VerticalAlignment="Top"
+                                       Source="{Binding CountryFlagImageUrl}"
+                                       Margin="2, 1, 0, 0" />
+                                <TextBlock TextWrapping="Wrap"
+                                           Text="{Binding Name}" />
+                            </StackPanel>
 
-                            <TextBlock TextWrapping="Wrap"
-                                       Text="{Binding CountryCode}" />
+                                <TextBlock TextWrapping="Wrap"
+                                           Text="{Binding TemperatureDescription}" />
+                     
                         </StackPanel>
                     </Grid>
 
